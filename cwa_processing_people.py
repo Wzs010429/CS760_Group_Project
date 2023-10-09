@@ -1,7 +1,10 @@
 import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.tag import pos_tag
 import re
+import json
 
 
 
@@ -13,7 +16,6 @@ def extract_adjectives_in_conditional_sentence(input_string):
 
 def extract_words_from_sentences(sentences_str):
     sentences = sentences_str.split(".")
-    print(sentences)
     first_is_list = []
     second_is_list = []
 
@@ -148,11 +150,61 @@ def create_output_string(dct, word_list):
     return output_string.strip()
 
 
+def preprocessing(text):
+    sentences = ""
+    first_list, second_list = extract_words_from_sentences(text)
+    for name in extract_names_and_attributes(text).keys():
+        # for each words in the list
+        for word in find_unique_elements(first_list, second_list):
+            # Generate a sentence if the word is not in the value of the current key of the dictionary
+            if word not in extract_names_and_attributes(text)[name]:
+                sentences = sentences + (f" {name} is not {word}.")
+    # Perform preprocessing on the text
+    # Replace this with your actual preprocessing logic
+    return sentences + " " + text
+
+
 if __name__ == "__main__":
-    sentences_str = "Dave is strong. Dave is big. Charlie is thin. Charlie is short. Anne is smart. Alan is rough. Alan is bad. If someone is not huge then they are rough. If someone is not poor then they are quiet. If someone is smart then they are wealthy. If someone is wealthy and not dull then they are nice. If someone is rough and not huge then they are sad. If someone is thin and short then they are dull. If someone is dull and not wealthy then they are bad. All quiet people are kind. "
-    first_list, second_list = extract_words_from_sentences(sentences_str)
+    # sentences_str = "Anne is huge. Anne is big. Anne is high. Harry is little. Harry is short. Alan is nice. Alan is quiet. Alan is kind. Erin is rough. Erin is poor. Erin is sad. Huge people are nice. If someone is little and short then they are small. If someone is rough and poor then they are dull. If someone is nice and quiet then they are wealthy. All small people are thin. All nice people are quiet. All wealthy people are smart. All dull people are bad."
+    # first_list, second_list = extract_words_from_sentences(sentences_str)
     # print("The first list：", first_list)
     # print("The second list：", second_list)
-
+    # print(extract_names_and_attributes(sentences_str))
+    # print(find_unique_elements(first_list, second_list))
+    #
+    # sentences = ""
+    #
+    # for name in extract_names_and_attributes(sentences_str).keys():
+    #     # for each words in the list
+    #     for word in find_unique_elements(first_list, second_list):
+    #         # Generate a sentence if the word is not in the value of the current key of the dictionary
+    #         if word not in extract_names_and_attributes(sentences_str)[name]:
+    #             sentences = sentences + (f" {name} is not {word}.")
+    #
+    # print(sentences)
     # call this py file to return a string base on cwa (People)
     # print(create_output_string(extract_names_and_attributes(sentences_str), find_unique_elements(first_list, second_list)))
+
+    # List of JSON file names to process
+    json_files = [
+        "PARARULE_plus_step2_People_sample.json",
+        "PARARULE_plus_step3_People_sample.json",
+        "PARARULE_plus_step4_People_sample.json",
+        "PARARULE_plus_step5_People_sample.json"
+    ]
+
+    # Iterate over each JSON file
+    for file_name in json_files:
+        # Load the JSON data from file
+        with open(file_name, 'r') as file:
+            data = json.load(file)
+
+        # Extract context from each data entry, preprocess, and update the data
+        for entry in data:
+            original_context = entry['context']
+            preprocessed_context = preprocessing(original_context)
+            entry['context'] = f"{preprocessed_context}"
+
+        # Write the updated data back to the JSON file
+        with open(file_name, 'w') as file:
+            json.dump(data, file, indent=4)

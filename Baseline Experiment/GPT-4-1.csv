@@ -1,0 +1,83 @@
+step,return,label
+step2_People,False,0
+step2_People,True,1
+step2_People,"The proposition ""Bob is small"" is true. According to the propositions, if someone is little and thin, they are short. And all short people are small. Since Bob is described as little and thin, he would be short and therefore small.",1
+step2_People,The text does not provide information on whether Fiona is kind.,1
+step2_People,False,0
+step2_People,True,0
+step2_People,False,1
+step2_People,True,1
+step2_People,False,0
+step2_People,False,0
+step2_People,False,0
+step2_People,The propositions do not provide information to determine if Charlie is nice.,1
+step2_People,False,0
+step2_People,True,0
+step2_People,False,1
+step2_People,True,0
+step2_People,True,1
+step2_People,False,1
+step2_People,False,0
+step2_People,True,1
+step3_People,False,0
+step3_People,"The statement ""Gary is not nice"" is true. According to the propositions, Gary is high and high people are smart. If someone is smart, they are wealthy. All wealthy people are nice. However, there is no information given that contradicts these propositions, so we can't definitively say that Gary is not nice.",0
+step3_People,False,0
+step3_People,True,1
+step3_People,False,0
+step3_People,False,0
+step3_People,False,0
+step3_People,False,0
+step3_People,False,0
+step3_People,True,1
+step3_People,True,1
+step3_People,False,0
+step3_People,True,1
+step3_People,False,1
+step3_People,True,1
+step3_People,False,0
+step3_People,"The text does not provide information to support the statement ""Bob is not smart.""",0
+step3_People,False,1
+step3_People,"The statement ""Bob is not tiny"" is true.
+
+From the propositions, we know that Bob is thin and short, which means he is small. However, the propositions do not state that all small people are tiny, only that all little people are tiny. Since Bob is not described as little, we cannot conclude that he is tiny. Therefore, the statement ""Bob is not tiny"" is true.",0
+step3_People,False,1
+step4_People,True,0
+step4_People,False,1
+step4_People,True,1
+step4_People,False,1
+step4_People,False,0
+step4_People,False,0
+step4_People,False,1
+step4_People,True,0
+step4_People,False,0
+step4_People,False,1
+step4_People,False,1
+step4_People,False,1
+step4_People,False,0
+step4_People,True,0
+step4_People,False,1
+step4_People,True,0
+step4_People,False,0
+step4_People,False,0
+step4_People,True,1
+step4_People,False,0
+step5_People,False,0
+step5_People,False,0
+step5_People,The propositions do not provide enough information to determine whether Bob is bad or not.,0
+step5_People,True,0
+step5_People,True,0
+step5_People,"False. According to the propositions, all thin people are dull. Harry is big and huge, but there is no information given that contradicts the possibility of him being thin. Therefore, we cannot definitively say that Harry is not dull.",0
+step5_People,True,0
+step5_People,False,0
+step5_People,False,1
+step5_People,True,0
+step5_People,True,0
+step5_People,False,1
+step5_People,True,0
+step5_People,False,1
+step5_People,False,1
+step5_People,True,0
+step5_People,False,0
+step5_People,True,0
+step5_People,False,1
+step5_People,True,0
